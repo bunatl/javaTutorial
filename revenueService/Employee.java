@@ -18,7 +18,11 @@ public class Employee extends Person{
 
     public String getEmployeesCompany(){ return this.company; }
 
+    //override the checkTaxes function fron Person class
+    public void checkTaxes(){
+        System.out.println( "Empolyee doesn't pay taxes himself. Instead, his company paying taxes on his behave." );
+    }
+
     // More specific characteristic about employee, compare to Person
     private String company;
-
 }

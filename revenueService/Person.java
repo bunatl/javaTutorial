@@ -1,21 +1,23 @@
 package revenueService;
 
-public class Person{
+public class Person {
+    private static int CURRENT_ID = 0;
+
     public Person( String surname, int age, int salary ){
-        this.id = this.CURRENT_ID++;
+        this.id = CURRENT_ID++;
         this.surname = surname;
         this.age = age;
         this.salary = salary;
     }
     
-    public Person( int id, String surname ){
+    public Person( String surname ){
         this( surname, 0, 0 );
     }
 
     // Since custom constructor is defined and class is extended default constrocr should be defined as well
     // https://stackoverflow.com/questions/4488716/java-default-constructor
     public Person(){
-        this( "fromEmployee", 0, 0 );
+        this( "fromEmployee" );
     }
 
     // copy constructor
@@ -37,7 +39,12 @@ public class Person{
     public boolean setAge( int age ){ this.age = age; return true; }
     public int getSalary(){ return this.salary; }
     public boolean setSalary( int salary ){ this.salary = salary; return true; }
-        
+
+    public void checkTaxes(){
+        System.out.println( "Each person needs to pay taxes!." );
+        calculateTaxes();
+    }
+            
     // Person characteristics
     private int id;
     private String name;
@@ -45,8 +52,6 @@ public class Person{
     private int age;
     private int salary;
     private double taxes;
-
-    private static int CURRENT_ID = 0;
 
     // Person's taxes have to be calculated internally
     private void calculateTaxes(){
